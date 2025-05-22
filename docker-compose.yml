@@ -3,14 +3,14 @@ version: "3.8"
 
 services:
   backend:
-    build: ./backend
+    image: concord_backend
     ports:
       - "3001:3001"
     volumes:
       - backend-db:/app/database.sqlite
 
   frontend:
-    build: ./frontend
+    image: concord_frontend
     ports:
       - "8080:80"
     depends_on:
