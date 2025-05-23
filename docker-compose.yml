@@ -1,20 +1,20 @@
-
 version: "3.8"
 
 services:
   backend:
-    image: concord_backend
+    build: ./backend
     ports:
-      - "3001:3001"
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
     volumes:
-      - backend-db:/app/database.sqlite
+      - ./backend:/app
 
   frontend:
-    image: concord_frontend
+    build: ./frontend
     ports:
-      - "8080:80"
-    depends_on:
-      - backend
-
-volumes:
-  backend-db:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./frontend:/app
